@@ -26,12 +26,10 @@ const App = () => {
     <Main>
       <TopBar />
       <ContentWrapper>
-        <>
-          <Text variant="h1" align="center" style={{ padding: "0 10%" }}>
-            Sign in
-          </Text>
-          <Form success={handleSuccess} />
-        </>
+        <Text variant="h1" align="center" style={{ padding: "0 10%" }}>
+          Sign in
+        </Text>
+        <Form success={handleSuccess} />
       </ContentWrapper>
     </Main>
   )
