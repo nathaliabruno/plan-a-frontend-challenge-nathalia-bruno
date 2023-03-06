@@ -1,6 +1,7 @@
 import Button from "../Button"
 import Input from "../Input"
 import { useForm } from "../../custom-hook"
+import { useState } from "react"
 
 const Form = ({ success }) => {
   const validationOptions = {
@@ -21,11 +22,11 @@ const Form = ({ success }) => {
           value: true,
           message: "Can not be empty",
         },
-        pattern: {
-          value:
-            "^((?=.*[d])(?=.*[a-z])(?=.*[A-Z])|(?=.*[a-z])(?=.*[A-Z])(?=.*[^wds])|(?=.*[d])(?=.*[A-Z])(?=.*[^wds])|(?=.*[d])(?=.*[a-z])(?=.*[^wds])).{6,30}$",
-          message:
-            "Password most contain 1 number, 1 special character and 1 letter with at least 6 characteres",
+        custom: {
+          isValid: (value) => {
+            return value && value.length > 5
+          },
+          message: "Password must contain at least 6 characteres",
         },
       },
     },
@@ -33,6 +34,20 @@ const Form = ({ success }) => {
   }
 
   const { handleSubmit, handleChange, errors } = useForm(validationOptions)
+
+  const [email, setEmail] = useState("")
+  const [pass, setPass] = useState("")
+
+  const handleInputPass = (e) => {
+    console.log(e)
+    setPass(e.target ? e.target.value : "")
+    handleChange("password", e)
+  }
+
+  const handleInputEmail = (e) => {
+    setEmail(e.target ? e.target.value : "")
+    handleChange("email", e)
+  }
 
   return (
     <div>
@@ -43,19 +58,31 @@ const Form = ({ success }) => {
           placeholder="smith@smithandco.com"
           name="email"
           errorMessage={errors?.email}
-          changeHandle={handleChange("email")}
+          changeHandle={(e) => handleInputEmail(e)}
+          value={email}
           error={errors?.email}
         />
         <Input
           type="password"
-          label="Create password"
+          label="Password"
           placeholder="6 caracteres or more"
           name="password"
-          changeHandle={handleChange("password")}
+          changeHandle={(e) => handleInputPass(e)}
+          value={pass}
           errorMessage={errors?.password}
           error={errors?.password}
         />
-        <Button label="Primary" primary fullWidth />
+        <Button
+          label="Sign In"
+          primary
+          fullWidth
+          disabled={
+            errors?.email ||
+            errors?.password ||
+            email.length < 3 ||
+            pass.length < 6
+          }
+        />
       </form>
     </div>
   )

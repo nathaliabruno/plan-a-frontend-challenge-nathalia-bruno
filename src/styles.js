@@ -4,16 +4,16 @@ const theme = {
   color: {
     background: "#FFFFFF",
     primary: {
-      main: "#FDB515",
-      contrastText: "#141E35",
-      hover: "#FEDA8A",
-      pressed: "#FEECC4",
+      main: "#ff5800",
+      contrastText: "#FFFFFF",
+      hover: "#f9681b",
+      pressed: "#ae4b17",
     },
     secondary: {
-      main: "#1472EC",
+      main: "#62a329",
       contrastText: "#FFFFFF",
-      hover: "#8CBBF9",
-      pressed: "#C5DDFC",
+      hover: "#8ed64e",
+      pressed: "#436922",
     },
     disabled: {
       background: "#EDEEF0",
