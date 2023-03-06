@@ -13,8 +13,7 @@ Implement a login form with the following:
 4. Do the login using the following API with username and password (Create user session
 with login):
 https://developers.themoviedb.org/3/getting-started/introduction
-PS1.: You can use the following API key: 8a732f489f66fcfb6feee9839dc02d76
-PS2.: You can use the username planatest and the password 123456;
+Use credentials received by email
 5. When the login is done correctly, then take the user to the home page;
 6. Keep the user logged in.
 ## Home page:
